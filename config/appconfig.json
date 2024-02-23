@@ -1,0 +1,60 @@
+{
+  "tables": {
+    "LendingProduct": [
+      {
+        "source_system": "teradata",
+        "target_system": "snowflake",
+        "load_type": "dl",
+        "app_name": "td2sf_tlen_cust",
+        "cob_date": "dt2_business",
+        "source_entity": "select * from dl_rbg_schema.td2sf_tlen_cust",
+        "target_database": "sor_lending_db",
+        "target_table": "tlend_cust",
+        "target_schema": "sor_lending_src"
+      },
+      {
+        "source_system": "teradata",
+        "target_system": "snowflake",
+        "load_type": "dl",
+        "app_name": "tmdw_loan",
+        "cob_date": "dt2_business",
+        "source_entity": "select * from dl_rbg_schema.tmdw_loan",
+        "target_database": "sor_lending_db",
+        "target_table": "tmdw_loan",
+        "target_schema": "sor_lending_src"
+      }
+    ],
+    "CashProduct": [
+      {
+        "source_system": "teradata",
+        "target_system": "snowflake",
+        "load_type": "dl",
+        "app_name": "tdim_branch",
+        "cob_date": "dt2_load",
+        "source_entity": "select * from dl_rbg_schema.tdim_branch",
+        "target_database": "sor_lending_db",
+        "target_table": "tdim_branch",
+        "target_schema": "sor_lending_src"
+      }
+    ]
+  },
+  "connections": {
+    "teradata": {
+      "logmech": "KRB5",
+      "url": "teradata://DZQTDWM/LOGMECH=KRB5,LOB_SUPPORT=ON,TMODE=TERA,LOGDATA=proid",
+      "driver": "com.ms.yard.spark_service.datastore.FdwTeraDriver",
+      "keytabs": "FILE:/var/spool/keytabs/proid",
+      "principal": "proid@abc",
+      "encryptdata": true,
+      "refreshKrb5Config": true
+    },
+    "snowflake": {
+      "sfUrl": "abc.snowflakecomputing.com",
+      "sfAccount": "abc.azure.privatelink",
+      "sfUser": "proid",
+      "pem_private_key": "pkb",
+      "sfRole": "APP_WRITE_ROLE",
+      "sfWarehouse": "ANALYTIC_WH_M"
+    }
+  }
+}
