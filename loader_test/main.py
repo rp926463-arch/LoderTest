@@ -1,4 +1,4 @@
-from app.data_loader import DataLoader
+from loader_test.app.data_loader import DataLoader
 
 config = DataLoader("./config/appconfig.json")
 

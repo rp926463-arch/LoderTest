@@ -1,9 +1,9 @@
 import concurrent.futures
 import json
 
-from table_config import TableConfig
-from connectors.snowflake_config import SnowflakeConfig
-from connectors.teradata_config import TeradataConfig
+from loader_test.app.data.table_config import TableConfig
+from loader_test.app.connectors.snowflake_config import SnowflakeConfig
+from loader_test.app.connectors.teradata_config import TeradataConfig
 
 
 class DataLoader:
